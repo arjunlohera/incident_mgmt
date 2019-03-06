@@ -18,9 +18,9 @@ class Incident extends CI_Controller {
 
     public function new_incident(){
         
-        // $this->form_validation->set_rules('type', 'Incident Type', 'required');
-        // $this->form_validation->set_rules('date', 'Date', 'required');
-        // $this->form_validation->set_rules('description', 'Description', 'required');
+        $this->form_validation->set_rules('type', 'Incident Type', 'required');
+        $this->form_validation->set_rules('date', 'Date', 'required');
+        $this->form_validation->set_rules('description', 'Description', 'required');
 
         if($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header');
