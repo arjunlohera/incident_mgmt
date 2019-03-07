@@ -19,7 +19,7 @@ class Incident extends CI_Controller {
     public function new_incident(){
         
         $this->form_validation->set_rules('type', 'Incident Type', 'required');
-        $this->form_validation->set_rules('date', 'Date', 'required');
+        $this->form_validation->set_rules('incident_date', 'Date', 'required');
         $this->form_validation->set_rules('description', 'Description', 'required');
 
         if($this->form_validation->run() === FALSE) {
@@ -27,8 +27,18 @@ class Incident extends CI_Controller {
             $this->load->view('pages/new_incident');
             $this->load->view('templates/footer');
         } else {
-            $this->incident_model->insert_incident();
-            $this->show_incidents();
+            if($this->incident_model->insert_incident()){
+                echo "<script>
+                    alert('Incident Inserted Successfully');
+                    window.location = '".base_url() . "index.php/Incident/show_incidents';
+                </script>";
+            } else {
+                echo "<script>
+                    alert('Failed to insert the Incident');
+                    window.location = '".base_url() . "index.php/Incident/new_incidents';
+                </script>";
+            }
+            
            
         }
     }

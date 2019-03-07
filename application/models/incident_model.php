@@ -8,7 +8,7 @@ class Incident_model extends CI_Model {
     public function insert_incident() {
         $data = array(
             'type' => $this->input->post('type'),
-            'date' => $this->input->post('date'),
+            'date' => date("Y-m-d", strtotime($this->input->post('incident_date'))),
             'description' => $this->input->post('description')
         );
          $this->db->insert('incident_details', $data);
