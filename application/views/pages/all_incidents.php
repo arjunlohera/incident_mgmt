@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mb-2">
         <div class="col">
-            <a class="btn btn-success" href="http://localhost/incident_mgmt/index.php/Incident/new_incident/"
+            <a class="btn btn-success" href="<?php echo base_url();?>"
                 role="button">Add New Incident</a>
         </div>
     </div>
@@ -11,7 +11,7 @@
             <table class="table table-bordered table-hover">
                 <thead class="table-success">
                     <tr>
-                        <th style="width: 10%" scope="col">Sr.no</th>
+                        <th style="width: 10%" scope="col">ID</th>
                         <th style="width: 15%" scope="col">Date</th>
                         <th style="width: 15%" scope="col">Incident Type</th>
                         <th style="width: 60%" scope="col">Description</th>

@@ -11,14 +11,19 @@ class Incident extends CI_Controller {
     }
 
     public function view() {
+        $limit = 5;
+        $offset = 0;
+        $data['latest_incidents'] =  $this->incident_model->get_incidents($limit, $offset);
         $this->load->view('templates/header');
-        $this->load->view('pages/new_incident');
+        $this->load->view('pages/new_incident', $data);
         $this->load->view('templates/footer');
     }
 
+
+    /**Replace this method with ajax method */
     public function new_incident(){
         
-        $this->form_validation->set_rules('type', 'Incident Type', 'required');
+        $this->form_validation->set_rules('incident_type', 'Incident Type', 'required');
         $this->form_validation->set_rules('incident_date', 'Date', 'required');
         $this->form_validation->set_rules('description', 'Description', 'required');
 
@@ -47,7 +52,7 @@ class Incident extends CI_Controller {
 
     public function show_incidents() {
         $config = array();
-        $limit_per_page = 2;
+        $limit_per_page = 3;
         $total_row = $this->incident_model->get_total_rows();
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
         $config["base_url"] = base_url() . "index.php/Incident/show_incidents";
@@ -85,5 +90,26 @@ class Incident extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('pages/all_incidents', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function ajax_method() {
+        $this->form_validation->set_rules('incident_type', 'Incident Type', 'required');
+        $this->form_validation->set_rules('incident_date', 'Date', 'required');
+        $this->form_validation->set_rules('description', 'Description', 'required');
+
+        if($this->form_validation->run() === FALSE) {
+            $this->load->view('templates/header');
+            $this->load->view('pages/new_incident');
+            $this->load->view('templates/footer');
+        } else {
+            if($this->incident_model->insert_incident()){
+                echo 1;
+            } else {
+                echo "<script>
+                    alert('Failed to insert the Incident');
+                    window.location = '".base_url() . "index.php/Incident/';
+                </script>";
+            }
+         }
     }
 }
