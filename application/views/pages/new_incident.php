@@ -30,10 +30,10 @@
                 <textarea class="form-control" id="description" rows="8" maxlength="1000" name="description"
                     placeholder="Type description here..."></textarea>
             </div>
-            <button type="submit" class="btn btn-info btn-lg">Add</button>
+            <button type="submit" class="btn btn-outline-info btn-lg">Add</button>
             </form>
         </div>
-        <div class="col-md-6 col-lg-6">
+        <div class="col-md-6 col-lg-7">
             <table class="table table-bordered table-hover">
                 <thead class="table-success">
                     <tr>
@@ -45,14 +45,13 @@
                 </thead>
                 <tbody>
                     <?php if(isset($latest_incidents)) {
-                    foreach($latest_incidents as $item) {    
+                    foreach($latest_incidents as $item) {
                     ?>
-
                     <tr>
                         <td><?php echo $item->date; ?></td>
                         <td><?php echo $item->type; ?></td>
                         <td class="text-justify"><?php echo $item->description; ?></td>
-                        <td>Action</td>
+                        <td><button class="btn btn-outline-success btn-sm delete_button" id="<?php echo $item->ID;?>">Delete</button></td>
                     </tr>
                     <?php }
                      } else {

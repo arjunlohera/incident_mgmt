@@ -20,35 +20,6 @@ class Incident extends CI_Controller {
     }
 
 
-    /**Replace this method with ajax method */
-    public function new_incident(){
-        
-        $this->form_validation->set_rules('incident_type', 'Incident Type', 'required');
-        $this->form_validation->set_rules('incident_date', 'Date', 'required');
-        $this->form_validation->set_rules('description', 'Description', 'required');
-
-        if($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header');
-            $this->load->view('pages/new_incident');
-            $this->load->view('templates/footer');
-        } else {
-            if($this->incident_model->insert_incident()){
-                echo "<script>
-                    alert('Incident Inserted Successfully');
-                    window.location = '".base_url() . "index.php/Incident/show_incidents';
-                </script>";
-            } else {
-                echo "<script>
-                    alert('Failed to insert the Incident');
-                    window.location = '".base_url() . "index.php/Incident/new_incidents';
-                </script>";
-            }
-            
-           
-        }
-    }
-
-
 
     public function show_incidents() {
         $config = array();
@@ -92,7 +63,7 @@ class Incident extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function ajax_method() {
+    public function new_incident() {
         $this->form_validation->set_rules('incident_type', 'Incident Type', 'required');
         $this->form_validation->set_rules('incident_date', 'Date', 'required');
         $this->form_validation->set_rules('description', 'Description', 'required');
@@ -111,5 +82,17 @@ class Incident extends CI_Controller {
                 </script>";
             }
          }
+    }
+
+    public function delete_incident() {
+        $id = $this->input->post('id');
+        if($this->incident_model->delete_query($id)){
+            echo 1;
+        } else {
+            echo "<script>
+                alert('Failed to Delete the Incident');
+                window.location = '".base_url() . "index.php/Incident/';
+            </script>";
+        }
     }
 }

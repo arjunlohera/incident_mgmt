@@ -36,6 +36,11 @@ class Incident_model extends CI_Model {
         return $this->db->count_all('incident_details');
     }
 
+    public function delete_query($id) {
+        $this->db->delete('incident_details', array('id' => $id)); 
+        return ($this->db->affected_rows() > 0) ? true : false; 
+    }
+
     
 }
 ?>

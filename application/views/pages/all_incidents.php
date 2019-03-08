@@ -1,8 +1,7 @@
 <div class="container">
     <div class="row mb-2">
         <div class="col">
-            <a class="btn btn-success" href="<?php echo base_url();?>"
-                role="button">Add New Incident</a>
+            <a class="btn btn-success" href="<?php echo base_url();?>" role="button">Add New Incident</a>
         </div>
     </div>
     <div class="row">
