@@ -11,9 +11,9 @@ class Incident extends CI_Controller {
     }
 
     public function view() {
-        $limit = 5;
+        $total_rows = $this->incident_model->get_total_rows();;
         $offset = 0;
-        $data['latest_incidents'] =  $this->incident_model->get_incidents($limit, $offset);
+        $data['latest_incidents'] =  $this->incident_model->get_incidents($total_rows, $offset);
         $this->load->view('templates/header');
         $this->load->view('pages/new_incident', $data);
         $this->load->view('templates/footer');
@@ -75,6 +75,8 @@ class Incident extends CI_Controller {
         } else {
             if($this->incident_model->insert_incident()){
                 echo 1;
+                // $row = $this->incident_model->get_incidents(1,0);
+                // echo json_encode($row);
             } else {
                 echo "<script>
                     alert('Failed to insert the Incident');

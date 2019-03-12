@@ -27,9 +27,6 @@ class Incident_model extends CI_Model {
             return $data;
         }
         return false; 
-
-        // $query = $this->db->get('incident_details');
-        // return $query->result_array();
     }
 
     public function get_total_rows() {

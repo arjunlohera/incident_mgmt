@@ -1,12 +1,11 @@
 //JavaScript Closure
 var date_picker = (function() {
 	return function() {
-		$("#datepicket_date").datepicker({
+		$("#datepicker_date").datepicker({
 			endDate: "+0d"
 		});
 	};
 })();
-
 var validate_form = (function() {
 	return function() {
 		$("form[id='myform']").validate({
@@ -19,19 +18,18 @@ var validate_form = (function() {
 				}
 			},
 			messages: {
-				incidetn_type: "Please Select an Incident type",
-				incident_date: "Please Select a Valid date",
+				incident_type: "Please Select an Incident type",
+				incident_date: "Select date",
 				description: {
 					required: "Please Enter description about Incident",
 					maxlength: "Maximum 1000 characters are allowed."
-				}
+				} 
 			},
 			submitHandler: function(form) {
 				var form_data = $("#myform").serialize();
 				var incident_type = $("#incident_type").val();
 				var incident_date = $("#incident_date").val();
 				var description = $("#description").val();
-				var sno = 1;
 				var tBody =
 					"<tr><td>" +
 					incident_date +
@@ -39,20 +37,30 @@ var validate_form = (function() {
 					incident_type +
 					'</td><td class="text-justify">' +
 					description +
-					"</td><td><a class='btn btn-outline-success btn-sm' href='#' role='button'>Delete</a>" +
+					"</td><td><button class='btn btn-outline-danger btn-sm delete_button' disabled>Delete</button>" +
 					"</td></tr>";
-				var incident_description = $("#description").val();
 				$.post(
 					window.location.origin +
 						"/incident_mgmt/index.php/Incident/new_incident",
 					form_data,
 					function(result) {
 						if (result) {
-							$("#description").after(
-								'<div style="color:green;">' +
-									"<p>(Row inserted successfully.)</p></div>"
-							);
+							// var data = JSON.parse(result);
+							// console.log(data[0].ID);
+							// $("#description").after(
+							// 	'<div style="color:green;">' +
+							// 		"<p>"+ data[0].ID +"</p></div>"
+							// );
+							$('#notice').css("display", "block");
+							$("#notice").fadeOut(2000, function(){
+								$(this).css("display", "none");
+							});
 							$("tbody").prepend(tBody);
+
+							/**To reset the form after successfully submission */
+							$('form').each(function(){
+								this.reset();
+							});
 						}
 					}
 				);
@@ -62,6 +70,12 @@ var validate_form = (function() {
 })();
 
 $(document).ready(function() {
+	$('#mytable').DataTable({
+		scrollY:        '50vh',
+        scrollCollapse: true,
+		paging:         false,
+		order: false
+	});
 	date_picker();
 	validate_form();
 	$('.delete_button').click(function(){
@@ -70,12 +84,12 @@ $(document).ready(function() {
 		$.ajax({
 			url: window.location.origin + "/incident_mgmt/index.php/Incident/delete_incident",
 			type: 'POST',
-			 data: { id:del_id },
-			 success: function(response) {
+			data: { id:del_id },
+			success: function(response) {
 				if(response){
 					// Remove row from HTML Table
 	 				$(element).closest('tr').css('background','tomato');
-	 				$(element).closest('tr').fadeOut(800,function(){
+	 				$(element).closest('tr').fadeOut(500,function(){
 	    			$(this).remove();
 	 				});
 				} else {
