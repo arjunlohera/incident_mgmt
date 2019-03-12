@@ -10,7 +10,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="incident_type">Incident Type:</label>
-                <select class="form-control" id="incident_type" style="height:2.8em" name="incident_type">
+                <select class="form-control" id="incident_type" style="height:2.8em" name="incident_type" required>
                     <option value="">--select--</option>
                     <option value="Accident">Accident</option>
                     <option value="Traffic Violation">Traffic Violation</option>
@@ -21,7 +21,7 @@
                 <label for="datepicker_date">Date:</label>
                 <div class='input-group date' id="datepicker_date">
                     <input type='text' id='incident_date' name="incident_date" class="form-control" style="height:2.8em"
-                        placeholder="MM/DD/YYYY">
+                        placeholder="MM/DD/YYYY" required>
                         <!-- <span class="input-group-addon input-group-text fas fa-calendar-alt fa-2x"></span> -->
                     <div class="input-group-addon">
                         <span class="input-group-text fas fa-calendar-alt fa-2x"></span>
@@ -32,7 +32,7 @@
             <div class="form-group col-md-8">
                 <label for="description">Description:</label>
                 <textarea class="form-control" id="description" rows="5" maxlength="1000" name="description"
-                    placeholder="Type description here..."></textarea>
+                    placeholder="Type description here..." required></textarea>
             </div>
             <div id="notice" class="col-md-6 font-weight-bold" style="color:green; display:none">
 				<p>(Row inserted successfully.)</p>

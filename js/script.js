@@ -25,7 +25,7 @@ var validate_form = (function() {
 					maxlength: "Maximum 1000 characters are allowed."
 				} 
 			},
-			submitHandler: function(form) {
+			submitHandler: function() {
 				var form_data = $("#myform").serialize();
 				var incident_type = $("#incident_type").val();
 				var incident_date = $("#incident_date").val();
