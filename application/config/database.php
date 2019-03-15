@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'incident',
-	'dbdriver' => 'mysqli',
+	'hostname' => 'DESKTOP-F5G1D6J',
+	'username' => 'sa',
+	'password' => 'Falcon001!',
+	'database' => 'training',
+	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

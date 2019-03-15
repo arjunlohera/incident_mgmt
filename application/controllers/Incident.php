@@ -69,8 +69,9 @@ class Incident extends CI_Controller {
         $this->form_validation->set_rules('description', 'Description', 'required');
 
         if($this->form_validation->run() === FALSE) {
+            $data['error'] = "Form validation rules not passed. (In Incident(controller)/new_incident(method)";
             $this->load->view('templates/header');
-            $this->load->view('pages/new_incident');
+            $this->load->view('pages/new_incident', $data);
             $this->load->view('templates/footer');
         } else {
             if($this->incident_model->insert_incident()){

@@ -1,4 +1,9 @@
 <div class="container">
+    <?php if(isset($error)){?>
+        <div class="row">
+        <p class="text-danger"><?php echo $error; ?></p>
+    </div>
+    <?php }?>
     <div class="row">
         <a class="btn btn-success mb-3" href="http://localhost/incident_mgmt/index.php/Incident/show_incidents/"
             role="button">View all Incidents</a>

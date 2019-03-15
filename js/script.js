@@ -39,18 +39,10 @@ var validate_form = (function() {
 					description +
 					"</td><td><button class='btn btn-outline-danger btn-sm delete_button' disabled>Delete</button>" +
 					"</td></tr>";
-				$.post(
-					window.location.origin +
-						"/incident_mgmt/index.php/Incident/new_incident",
+				$.post("http://localhost/incident_mgmt/index.php/Incident/new_incident",
 					form_data,
 					function(result) {
 						if (result) {
-							// var data = JSON.parse(result);
-							// console.log(data[0].ID);
-							// $("#description").after(
-							// 	'<div style="color:green;">' +
-							// 		"<p>"+ data[0].ID +"</p></div>"
-							// );
 							$('#notice').css("display", "block");
 							$("#notice").fadeOut(2000, function(){
 								$(this).css("display", "none");
@@ -61,6 +53,8 @@ var validate_form = (function() {
 							$('form').each(function(){
 								this.reset();
 							});
+						} else {
+							alert("Data not inserted");
 						}
 					}
 				);
@@ -82,7 +76,7 @@ $(document).ready(function() {
 		var element = this;
 		var del_id = this.id;
 		$.ajax({
-			url: window.location.origin + "/incident_mgmt/index.php/Incident/delete_incident",
+			url: "http://localhost/incident_mgmt/index.php/Incident/delete_incident",
 			type: 'POST',
 			data: { id:del_id },
 			success: function(response) {
