@@ -1,6 +1,6 @@
 <div class="container">
     <?php if(isset($error)){?>
-        <div class="row">
+    <div class="row">
         <p class="text-danger"><?php echo $error; ?></p>
     </div>
     <?php }?>
@@ -27,7 +27,7 @@
                 <div class='input-group date' id="datepicker_date">
                     <input type='text' id='incident_date' name="incident_date" class="form-control" style="height:2.8em"
                         placeholder="MM/DD/YYYY" required>
-                        <!-- <span class="input-group-addon input-group-text fas fa-calendar-alt fa-2x"></span> -->
+                    <!-- <span class="input-group-addon input-group-text fas fa-calendar-alt fa-2x"></span> -->
                     <div class="input-group-addon">
                         <span class="input-group-text fas fa-calendar-alt fa-2x"></span>
                     </div>
@@ -40,7 +40,7 @@
                     placeholder="Type description here..." required></textarea>
             </div>
             <div id="notice" class="col-md-6 font-weight-bold" style="color:green; display:none">
-				<p>(Row inserted successfully.)</p>
+                <p>(Row inserted successfully.)</p>
             </div>
         </div>
         <button type="submit" class="btn btn-outline-success btn-lg col-md-4">Add</button>
@@ -50,7 +50,7 @@
     <hr />
     <div class="row mt-5">
         <div class="col-12">
-        <h4>All Incidents:</h4>
+            <h4>All Incidents:</h4>
             <table id="mytable" class="table table-bordered table-hover table-responsive">
                 <thead class="table-success">
                     <tr>
