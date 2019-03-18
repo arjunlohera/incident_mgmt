@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'DESKTOP-F5G1D6J',
-	'username' => 'sa',
-	'password' => 'Falcon001!',
+	'hostname' => 'ARJUN',
+	'username' => '',
+	'password' => '',
 	'database' => 'training',
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
