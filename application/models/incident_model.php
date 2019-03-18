@@ -34,8 +34,8 @@ class Incident_model extends CI_Model {
     }
 
     public function delete_query($id) {
-        $this->db->delete('incident_details', array('id' => $id)); 
-        return ($this->db->affected_rows() > 0) ? true : false; 
+        $this->db->delete('incident_details', array('id' => $id));
+        return ($this->db->affected_rows() > 0) ? true : false;
     }
 
     

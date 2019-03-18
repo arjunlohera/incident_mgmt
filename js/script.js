@@ -44,7 +44,7 @@ var validate_form = (function() {
 					function(result) {
 						if (result) {
 							$('#notice').css("display", "block");
-							$("#notice").fadeOut(2000, function(){
+							$("#notice").fadeOut(1000, function(){
 								$(this).css("display", "none");
 							});
 							$("tbody").prepend(tBody);
