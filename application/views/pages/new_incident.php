@@ -27,7 +27,6 @@
                 <div class='input-group date' id="datepicker_date">
                     <input type='text' id='incident_date' name="incident_date" class="form-control" style="height:2.8em"
                         placeholder="MM/DD/YYYY" required>
-                    <!-- <span class="input-group-addon input-group-text fas fa-calendar-alt fa-2x"></span> -->
                     <div class="input-group-addon">
                         <span class="input-group-text fas fa-calendar-alt fa-2x"></span>
                     </div>

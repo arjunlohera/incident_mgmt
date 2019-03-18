@@ -1,4 +1,10 @@
-//JavaScript Closure
+/**
+ * This file include the custom javascript script for Incident management project.
+ */
+
+ /**
+  * JavaScript Closure for Bootstrap Datepicker
+  */
 var date_picker = (function() {
 	return function() {
 		$("#datepicker_date").datepicker({
@@ -6,6 +12,10 @@ var date_picker = (function() {
 		});
 	};
 })();
+
+/**
+ * Closure for Validate and submit a form
+ */
 var validate_form = (function() {
 	return function() {
 		$("form[id='myform']").validate({
@@ -30,6 +40,7 @@ var validate_form = (function() {
 				var incident_type = $("#incident_type").val();
 				var incident_date = $("#incident_date").val();
 				var description = $("#description").val();
+				/**Creating dynamic row for table */
 				var tBody =
 					"<tr><td>" +
 					incident_date +
@@ -47,7 +58,7 @@ var validate_form = (function() {
 							$("#notice").fadeOut(1000, function(){
 								$(this).css("display", "none");
 							});
-							$("tbody").prepend(tBody);
+							$("tbody").prepend(tBody); // Appending row to DOM
 
 							/**To reset the form after successfully submission */
 							$('form').each(function(){
@@ -64,6 +75,7 @@ var validate_form = (function() {
 })();
 
 $(document).ready(function() {
+	/**Implementing the data-table */
 	$('#mytable').DataTable({
 		scrollY:        '50vh',
         scrollCollapse: true,
@@ -72,6 +84,13 @@ $(document).ready(function() {
 	});
 	date_picker();
 	validate_form();
+	
+	/** 
+	 * This function call on clicking of delete button at the end of each of.
+	 * This function sends a ajax post request to delete_incident() method of Incident Controller,
+	 * with the ID of the row, as a data.
+	 * On success:  Remove row from HTML Table, otherwise shows an 'Failed to delete this row' alert.
+	 */
 	$('.delete_button').click(function(){
 		var element = this;
 		var del_id = this.id;
@@ -87,7 +106,7 @@ $(document).ready(function() {
 	    			$(this).remove();
 	 				});
 				} else {
-					alert('Invalid ID.');
+					alert('Failed to delete this row');
 				}
 			 }
 		});
