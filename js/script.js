@@ -34,7 +34,7 @@ var validate_form = (function() {
 					required: "Please Enter description about Incident",
 					maxlength: "Maximum 1000 characters are allowed."
 				} 
-			},
+			},   
 			submitHandler: function() {
 				var form_data = $("#myform").serialize();
 				var incident_type = $("#incident_type").val();
